@@ -59,7 +59,7 @@ function App() {
   const projects = [
     {
       name: "Digi Hosein",
-      link: "",
+      link: "https://hoseinshopcartreact.netlify.app/",
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/online-shopping-trolley-2748734-2289777.png",
       technologies: "React.js - Redux toolkit - Tailwind",
@@ -67,7 +67,7 @@ function App() {
     },
     {
       name: "Music city",
-      link: "",
+      link: "https://hosein-music-city.netlify.app/",
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/boy-listening-music-2527775-2114678.png",
       technologies: "React.js - Redux toolkit - Tailwind",
@@ -75,7 +75,7 @@ function App() {
     },
     {
       name: "Movie city",
-      link: "",
+      link: "https://movie-city-nextjs.netlify.app/",
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/movie-production-4991886-4159604.png?f=webp",
       technologies: "Next.js (SSG) - Tailwind",
