@@ -175,7 +175,7 @@ function App() {
                   <div className="w-full flex flex-col justify-center items-center gap-2 p-4">
                     <div className="flex flex-col justify-center items-center gap-4 pt-28">
                       <img
-                        className={`lg:block w-[15rem] lg:w-[30rem] absolute top-[-10rem] lg:bottom-0 lg:mt-auto lg:mb-auto right-0 lg:right-[-16rem] left-0 ml-auto mr-auto ${
+                        className={`lg:block w-[15rem] lg:w-[30rem] absolute top-[-10rem] lg:bottom-0 lg:mt-auto lg:mb-auto right-0 lg:right-[-16rem] left-0 lg:left-auto ml-auto mr-auto ${
                           currentPage === 2 && "fadeShow2"
                         }`}
                         src="https://cdni.iconscout.com/illustration/premium/thumb/male-developer-working-on-project-6992637-5699686.png?f=webp"
