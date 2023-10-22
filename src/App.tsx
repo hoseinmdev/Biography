@@ -86,6 +86,7 @@ function App() {
     <ReactFullpage
       licenseKey={"YOUR_KEY_HERE"}
       scrollingSpeed={1000}
+      credits={{}}
       navigation
       onLeave={(_origin, destination) => {
         setCurrentPage(destination.index);
