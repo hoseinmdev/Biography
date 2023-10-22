@@ -4,7 +4,9 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-
+import { MdAlternateEmail } from "react-icons/md";
+import { BsTelephone, BsTelegram } from "react-icons/bs";
+import { AiFillGithub } from "react-icons/ai";
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
   const skills = [
@@ -63,7 +65,8 @@ function App() {
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/online-shopping-trolley-2748734-2289777.png",
       technologies: "React.js - Redux toolkit - Tailwind",
-      description: "dsadsadasas",
+      description:
+        "There is a perfect online shop with a lot product to buy ^^",
     },
     {
       name: "Music city",
@@ -71,7 +74,7 @@ function App() {
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/boy-listening-music-2527775-2114678.png",
       technologies: "React.js - Redux toolkit - Tailwind",
-      description: "",
+      description: "A lot of music for listen and enjoy !",
     },
     {
       name: "Movie city",
@@ -79,7 +82,7 @@ function App() {
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/movie-production-4991886-4159604.png?f=webp",
       technologies: "Next.js (SSG) - Tailwind",
-      description: "",
+      description: "there is a multi language movie site for you ^^",
     },
   ];
   return (
@@ -102,10 +105,10 @@ function App() {
                       <img className="" src={Myself} alt="" />
                     </div>
                   </div>
-                  <div className="w-full h-full  bg-dark flex justify-center items-center lg:pt-0 pt-8 text-secondary">
+                  <div className="w-full h-full  bg-dark flex justify-center items-center text-secondary">
                     <div className="flex flex-col justify-center fadeShow2 items-center lg:items-start gap-2">
                       <p className="text-base lg:text-2xl">
-                        Web Front end developer
+                        Front end developer
                       </p>
                       <p className="text-3xl lg:text-5xl font-bold">
                         Hosein Mahmoudi
@@ -173,18 +176,18 @@ function App() {
               <div className="flex h-screen lg:flex-row flex-col justify-between items-center">
                 <div className="h-full w-full relative order-1 lg:order-none lg:w-[70%] bg-dark text-secondary flex flex-col lg:flex-row justify-start items-center gap-4">
                   <div className="w-full flex flex-col justify-center items-center gap-2 p-4">
-                    <div className="flex flex-col justify-center items-center gap-4 pt-28">
+                    <div className="flex flex-col justify-center items-center gap-4 pt-28 lg:pt-0">
                       <img
-                        className={`lg:block w-[15rem] lg:w-[30rem] absolute top-[-10rem] lg:bottom-0 lg:mt-auto lg:mb-auto right-0 lg:right-[-16rem] left-0 lg:left-auto ml-auto mr-auto ${
+                        className={`lg:block w-[15rem] lg:w-[35%] absolute top-[-10rem] lg:bottom-0 lg:mt-auto lg:mb-auto right-0 lg:right-[-20%] left-0 lg:left-auto ml-auto mr-auto ${
                           currentPage === 2 && "fadeShow2"
                         }`}
                         src="https://cdni.iconscout.com/illustration/premium/thumb/male-developer-working-on-project-6992637-5699686.png?f=webp"
                         alt=""
                       />
                       <p
-                        className={`text-3xl lg:text-4xl  ${
+                        className={`text-3xl lg:text-5xl  ${
                           currentPage === 2 && "fadeShow2"
-                        }`}
+                        } lg:pb-10`}
                       >
                         My Skills
                       </p>
@@ -192,7 +195,7 @@ function App() {
                     <Swiper
                       simulateTouch={false}
                       allowTouchMove={false}
-                      slidesPerView={window.innerWidth < 1024 ? 2 : 5}
+                      slidesPerView={window.innerWidth < 1024 ? 3.5 : 5}
                       spaceBetween={30}
                       loop={true}
                       slideToClickedSlide
@@ -213,11 +216,11 @@ function App() {
                             className="flex w-full h-full flex-col justify-around items-center gap-6"
                           >
                             <img
-                              className="w-[55%] skillImageAnimation"
+                              className="w-full lg:w-[55%] skillImageAnimation"
                               src={item.imageUrl}
                               alt=""
                             />
-                            <p className="text-xl flex h-full items-end">
+                            <p className="min-w-[6rem] text-base  lg:text-xl flex h-full items-end justify-center">
                               {item.skillName}
                             </p>
                           </SwiperSlide>
@@ -243,12 +246,19 @@ function App() {
                             key={item.imageUrl}
                             href={item.link}
                             target="blank"
-                            className="relative group/container w-full h-48 lg:w-80 lg:h-96 hover:translate-y-[-1rem] hover:scale-105 duration-200 lg:cursor-pointer rounded-md bg-primary text-white flex flex-col justify-between items-center p-4"
+                            className={`relative group/container w-full h-48 lg:w-80 lg:h-96 lg:hover:translate-y-[-1rem] lg:hover:scale-105 duration-200 lg:cursor-pointer rounded-md bg-primary text-white flex flex-col justify-between items-center p-4 ${currentPage === 3 && "fadeShow1"}`}
                           >
                             <div className="flex flex-row items-center justify-between w-full lg:flex-col">
-                              <p className="text-xl lg:text-3xl">{item.name}</p>
+                              <div className="flex flex-col justify-center items-start">
+                                <p className="text-xl lg:text-3xl">
+                                  {item.name}
+                                </p>
+                                <p className="text-sm lg:hidden">
+                                  {item.description}
+                                </p>
+                              </div>
                               <img
-                                className="group-hover/container:opacity-50 duration-200 lg:w-auto w-[12rem] "
+                                className="lg:group-hover/container:opacity-50 duration-200 lg:w-auto w-[12rem] "
                                 src={item.imageUrl}
                                 alt=""
                               />
@@ -256,7 +266,7 @@ function App() {
                             <p className="w-[95%] rounded-2xl text-center absolute bottom-2 lg:bottom-auto lg:relative lg:text-base   border border-secondary lg:rounded-full text-white p-1 ">
                               {item.technologies}
                             </p>
-                            <div className="absolute  opacity-0 top-16 right-0 p-4 bg-dark group-hover/container:scale-100 group-hover/container:opacity-100 duration-300">
+                            <div className="absolute  opacity-0 top-16 right-0 p-4 bg-dark lg:group-hover/container:scale-100 group-hover/container:opacity-100 duration-300 max-w-[10rem]">
                               {item.description}
                             </div>
                           </a>
@@ -269,6 +279,38 @@ function App() {
                     src="https://cdni.iconscout.com/illustration/free/thumb/free-developer-team-2043022-1731280.png"
                     alt=""
                   />
+                </div>
+              </div>
+            </div>
+            <div className="section">
+              <div className="w-full h-screen bg-dark flex flex-col justify-start items-center text-secondary p-8 gap-6">
+                <img
+                className={`${currentPage === 4 && "fadeShow2"}`}
+                  src="https://cdni.iconscout.com/illustration/premium/thumb/contact-us-6114172-5059493.png"
+                  alt=""
+                />
+                <p className="text-3xl lg:text-5xl">Contacts</p>
+                <div className={`lg:text-xl flex flex-col justify-center items-start gap-4 ${currentPage === 4 && "fadeShow2"}`}>
+                  <div className="flex justify-between items-center gap-2">
+                    <span className="scale-125">
+                      <MdAlternateEmail />
+                    </span>
+                    <p>Hoseinmdev@gmail.com</p>
+                  </div>
+                  <div className="flex justify-between items-center gap-2">
+                    <span className="scale-125">
+                      <BsTelephone />
+                    </span>
+                    <p>+98 922 236 56 85</p>
+                  </div>
+                  <div className="w-full flex justify-start items-center gap-8 pt-4">
+                    <div className="scale-[2]">
+                      <AiFillGithub />
+                    </div>
+                    <div className="scale-[2]">
+                      <BsTelegram />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
