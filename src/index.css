@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: VazirFont;
+  src: url(./assets/fonts/Vazir.woff);
+}
+
 * {
-  font-family: "Vazir";
+  font-family: "VazirFont";
 }
 
 @keyframes fadeShow1 {
