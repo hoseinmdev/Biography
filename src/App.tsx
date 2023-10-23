@@ -108,7 +108,7 @@ function App() {
       render={({ fullpageApi }) => {
         return (
           <ReactFullpage.Wrapper>
-            <div className="section">
+            <div className="section max-h-screen overflow-hidden">
               <div
                 className={` ${
                   i18n.dir() === "ltr" ? "right-0" : "left-0"
