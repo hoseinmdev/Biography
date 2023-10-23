@@ -12,12 +12,17 @@
   scrollbar-width: 0px;
   font-family: "VazirFont";
 }
-body{
-     -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+html {
+    overflow: scroll;
+    overflow-x: hidden;
 }
-body::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
 }
 @keyframes fadeShow {
   from {
