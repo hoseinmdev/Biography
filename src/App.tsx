@@ -120,7 +120,7 @@ function App() {
                 dir={i18n.dir()}
                 className="w-full overflow-hidden flex flex-col items-center justify-start transition-all"
               >
-                <div className="w-full overflow-hidden h-screen lg:flex-row flex flex-col">
+                <div className="w-full overflow-hidden max-h-screen lg:flex-row flex flex-col">
                   <div className="w-full lg:w-[50%] lg:h-full h-[35%] bg-primary relative">
                     <div
                       className={`lg:w-[28rem]  hover:scale-105 ring-4 fadeShow1 ring-dark duration-300 lg:shadow-2xl lg:h-[28rem] rounded-full overflow-hidden absolute top-[8rem] ${
