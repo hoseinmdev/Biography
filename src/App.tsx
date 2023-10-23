@@ -1,13 +1,26 @@
 import ReactFullpage from "@fullpage/react-fullpage";
 import Myself from "./assets/myself2.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import { MdAlternateEmail } from "react-icons/md";
-import { BsTelephone, BsTelegram } from "react-icons/bs";
+import {
+  BsTelephone,
+  BsTelegram,
+  BsFillArrowUpCircleFill,
+} from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
+import SelectLanguage from "./components/SelectLanguage";
 function App() {
+  const { i18n, t } = useTranslation();
+  // const { i18n, t } = useTranslation();
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("lang") || "fa";
+    !savedLanguage && localStorage.setItem("lang", "fa");
+    i18n.changeLanguage(savedLanguage);
+  }, []);
   const [currentPage, setCurrentPage] = useState(0);
   const skills = [
     {
@@ -40,8 +53,7 @@ function App() {
     },
     {
       skillName: "Redux",
-      imageUrl:
-        "https://cdn.freebiesupply.com/logos/large/2x/redux-logo-svg-vector.svg",
+      imageUrl: "https://austincumberlander.com/assets/img/redux-icon.png",
     },
     {
       skillName: "Next js",
@@ -60,29 +72,28 @@ function App() {
   ];
   const projects = [
     {
-      name: "Digi Hosein",
+      name: "digiHosein",
       link: "https://hoseinshopcartreact.netlify.app/",
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/online-shopping-trolley-2748734-2289777.png",
       technologies: "React.js - Redux toolkit - Tailwind",
-      description:
-        "There is a perfect online shop with a lot product to buy ^^",
+      description: "digiHoseinDesc",
     },
     {
-      name: "Music city",
+      name: "musicCity",
       link: "https://hosein-music-city.netlify.app/",
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/boy-listening-music-2527775-2114678.png",
       technologies: "React.js - Redux toolkit - Tailwind",
-      description: "A lot of music for listen and enjoy !",
+      description: "musicCityDesc",
     },
     {
-      name: "Movie city",
+      name: "movieCity",
       link: "https://movie-city-nextjs.netlify.app/",
       imageUrl:
         "https://cdni.iconscout.com/illustration/premium/thumb/movie-production-4991886-4159604.png?f=webp",
       technologies: "Next.js (SSG) - Tailwind",
-      description: "there is a multi language movie site for you ^^",
+      description: "movieCityDesc",
     },
   ];
   return (
@@ -94,40 +105,81 @@ function App() {
       onLeave={(_origin, destination) => {
         setCurrentPage(destination.index);
       }}
-      render={() => {
+      render={({ fullpageApi }) => {
         return (
           <ReactFullpage.Wrapper>
             <div className="section">
-              <div className="w-full flex flex-col items-center justify-start transition-all">
+              <div
+                className={` ${
+                  i18n.dir() === "ltr" ? "right-0" : "left-0"
+                } absolute top-0 p-4 lg:p-8`}
+              >
+                <SelectLanguage />
+              </div>
+              <div
+                dir={i18n.dir()}
+                className="w-full flex flex-col items-center justify-start transition-all"
+              >
                 <div className="w-full h-screen lg:flex-row flex flex-col">
                   <div className="w-full lg:w-[50%] lg:h-full h-[35%] bg-primary relative">
-                    <div className="lg:w-[28rem] hover:scale-105 ring-4 fadeShow1 ring-dark duration-300 lg:shadow-2xl lg:h-[28rem] rounded-full overflow-hidden absolute top-[8rem] right-0 lg:right-[-13.5rem] w-[12rem] h-[12rem]  lg:bottom-32 mb-auto mt-auto mr-auto ml-auto left-0 lg:mr-auto lg:ml-auto lg:left-auto bottom-0">
+                    <div
+                      className={`lg:w-[28rem] hover:scale-105 ring-4 fadeShow1 ring-dark duration-300 lg:shadow-2xl lg:h-[28rem] rounded-full overflow-hidden absolute top-[8rem] right-0 ${
+                        i18n.dir() === "ltr"
+                          ? "lg:right-[-13.5rem]"
+                          : "lg:left-[-35.3rem] right-0"
+                      } w-[12rem] h-[12rem]  lg:bottom-32 mb-auto mt-auto mr-auto ml-auto left-0 lg:mr-auto lg:ml-auto lg:left-auto bottom-0`}
+                    >
                       <img className="" src={Myself} alt="" />
                     </div>
                   </div>
-                  <div className="w-full h-full  bg-dark flex justify-center items-center text-secondary">
-                    <div className="flex flex-col justify-center fadeShow2 items-center lg:items-start gap-2">
+
+                  <div className="w-full h-full  bg-dark flex justify-center items-start lg:items-center text-secondary lg:pt-0 pt-24">
+                    <div
+                      className={`flex flex-col justify-center fadeShow2 items-start lg:items-start ${
+                        i18n.dir() === "ltr" ? "lg:pl-52" : "lg:pr-48"
+                      } gap-2 w-[75%]`}
+                    >
                       <p className="text-base lg:text-2xl">
-                        Front end developer
+                        {t("frontEndDeveloper")}
                       </p>
                       <p className="text-3xl lg:text-5xl font-bold">
-                        Hosein Mahmoudi
+                        {t("me")}
                       </p>
                       <p className="text-base lg:text-xl w-64 lg:w-96 flex flex-wrap">
-                        I have been learning front-end for about a year and I
-                        love my work ...
+                        {t("info")}
                       </p>
                       <p className="text-base lg:text-xl w-64 lg:w-96 flex flex-wrap">
-                        I have been learning front-end for about a year and I
-                        love my work ...
+                        {t("info2")}
                       </p>
-                      <div className="flex lg:flex-row lg:text-xl text-base flex-col justify-center items-center fadeShow3 gap-4 pt-4">
-                        <button className="py-2 px-10  rounded-full text-neutral-300 border-2 border-neutral-600">
-                          Download resume
-                        </button>
-                        <button className="py-2 px-10  bg-neutral-900 rounded-full">
-                          Contact
-                        </button>
+                      <div className="flex lg:flex-row lg:text-xl flex-col justify-center items-center fadeShow3 gap-4 pt-4 w-full text-sm lg:w-96 lg:flex-wrap">
+                        <div className="w-full flex justify-around items-center gap-2">
+                          <button
+                            onClick={() => fullpageApi.moveTo(2)}
+                            className="py-2 px-6  rounded-full text-neutral-300 border-2 border-neutral-600"
+                          >
+                            {t("whoAmI")}
+                          </button>
+                          <button
+                            onClick={() => fullpageApi.moveTo(3)}
+                            className="py-2 px-6  rounded-full text-neutral-300 border-2 border-neutral-600"
+                          >
+                            {t("mySkills")}
+                          </button>
+                        </div>
+                        <div className="w-full flex justify-around items-center gap-2">
+                          <button
+                            onClick={() => fullpageApi.moveTo(4)}
+                            className="py-2 px-6 rounded-full text-neutral-300 border-2 border-neutral-600"
+                          >
+                            {t("myProjects")}
+                          </button>
+                          <button
+                            className="py-2 px-6  text-neutral-300 border-2 border-neutral-600 rounded-full"
+                            onClick={() => fullpageApi.moveTo(5)}
+                          >
+                            {t("contacts")}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -135,7 +187,10 @@ function App() {
               </div>
             </div>
             <div className="section">
-              <div className="h-screen w-full relative bg-dark text-secondary flex flex-col lg:flex-row justify-start lg:justify-center items-center gap-4 p-8">
+              <div
+                dir={i18n.dir()}
+                className="h-screen w-full relative bg-dark text-secondary flex flex-col lg:flex-row justify-start lg:justify-center items-center gap-4 p-8"
+              >
                 <div
                   className={`w-[80%] flex gap-4 absolute top-10 lg:top-16 right-0 left-0 mr-auto ml-auto ${
                     currentPage === 1 && "fadeShow1"
@@ -161,12 +216,13 @@ function App() {
                     } flex flex-col items-center lg:items-start justify-center gap-3`}
                   >
                     <p className="lg:text-5xl text-4xl text-primary">
-                      Who i am !?
+                      {t("whoAmI")}
                     </p>
-                    <p className="text-lg lg:w-[40rem]">
-                      My name's Jane. I'm a web designer and developer based in
-                      Southampton, UK. During the day I work as a lead developer
-                      at a local agency and in the evening I work on freelance
+                    <p className="text-lg lg:text-2xl lg:w-[40rem]">
+                      {t("iAm")}
+                    </p>
+                    <p className="text-lg lg:text-2xl lg:w-[40rem]">
+                      {t("iAm2")}
                     </p>
                   </div>
                 </div>
@@ -189,7 +245,7 @@ function App() {
                           currentPage === 2 && "fadeShow2"
                         } lg:pb-10`}
                       >
-                        My Skills
+                        {t("mySkills")}
                       </p>
                     </div>
                     <Swiper
@@ -233,11 +289,14 @@ function App() {
               </div>
             </div>
             <div className="section">
-              <div className="w-full h-screen bg-dark flex flex-col justify-start lg:justify-center items-center p-4 text-secondary transition-all">
+              <div
+                dir={i18n.dir()}
+                className="w-full h-screen bg-dark flex flex-col justify-start lg:justify-center items-center p-4 text-secondary transition-all"
+              >
                 <div className="w-full lg:w-3/4 flex justify-center items-center">
                   <div className="w-full flex flex-col justify-center items-center lg:gap-8 gap-1">
                     <p className="text-secondary text-2xl lg:text-5xl">
-                      Projects
+                      {t("myProjects")}
                     </p>
                     <div className="w-full flex lg:flex-row flex-col justify-center items-center gap-2 lg:gap-8">
                       {projects.map((item) => {
@@ -246,28 +305,30 @@ function App() {
                             key={item.imageUrl}
                             href={item.link}
                             target="blank"
-                            className={`relative group/container w-full h-48 lg:w-80 lg:h-96 lg:hover:translate-y-[-1rem] lg:hover:scale-105 duration-200 lg:cursor-pointer rounded-md bg-primary text-white flex flex-col justify-between items-center p-4 ${currentPage === 3 && "fadeShow1"}`}
+                            className={`relative group/container w-full h-48 lg:w-80 lg:h-96 lg:hover:translate-y-[-1rem] lg:hover:scale-105 duration-200 lg:cursor-pointer rounded-md bg-primary text-white flex flex-col justify-between items-center p-4 ${
+                              currentPage === 3 && "fadeShow1"
+                            }`}
                           >
                             <div className="flex flex-row items-center justify-between w-full lg:flex-col">
-                              <div className="flex flex-col justify-center items-start">
+                              <div className="flex flex-col justify-center items-start gap-1">
                                 <p className="text-xl lg:text-3xl">
-                                  {item.name}
+                                  {t(item.name)}
                                 </p>
                                 <p className="text-sm lg:hidden">
-                                  {item.description}
+                                  {t(item.description)}
                                 </p>
                               </div>
                               <img
-                                className="lg:group-hover/container:opacity-50 duration-200 lg:w-auto w-[12rem] "
+                                className="lg:group-hover/container:opacity-50 duration-200 lg:w-auto w-[10rem] "
                                 src={item.imageUrl}
                                 alt=""
                               />
                             </div>
-                            <p className="w-[95%] rounded-2xl text-center absolute bottom-2 lg:bottom-auto lg:relative lg:text-base   border border-secondary lg:rounded-full text-white p-1 ">
+                            <p className="w-[95%] rounded-md text-center absolute bottom-2 text-sm lg:bottom-auto lg:relative lg:text-base   border border-secondary text-white p-1 ">
                               {item.technologies}
                             </p>
-                            <div className="absolute  opacity-0 top-16 right-0 p-4 bg-dark lg:group-hover/container:scale-100 group-hover/container:opacity-100 duration-300 max-w-[10rem]">
-                              {item.description}
+                            <div className="absolute  opacity-0 top-16 right-0 p-4 bg-dark lg:group-hover/container:scale-100 lg:group-hover/container:opacity-100 duration-300 max-w-[12rem]">
+                              {t(item.description)}
                             </div>
                           </a>
                         );
@@ -285,12 +346,16 @@ function App() {
             <div className="section">
               <div className="w-full h-screen bg-dark flex flex-col justify-start items-center text-secondary p-8 gap-6">
                 <img
-                className={`${currentPage === 4 && "fadeShow2"}`}
+                  className={`${currentPage === 4 && "fadeShow2"}`}
                   src="https://cdni.iconscout.com/illustration/premium/thumb/contact-us-6114172-5059493.png"
                   alt=""
                 />
-                <p className="text-3xl lg:text-5xl">Contacts</p>
-                <div className={`lg:text-xl flex flex-col justify-center items-start gap-4 ${currentPage === 4 && "fadeShow2"}`}>
+                <p className="text-3xl lg:text-5xl">{t("contacts")}</p>
+                <div
+                  className={`lg:text-xl flex flex-col justify-center items-start gap-4 ${
+                    currentPage === 4 && "fadeShow2"
+                  }`}
+                >
                   <div className="flex justify-between items-center gap-2">
                     <span className="scale-125">
                       <MdAlternateEmail />
@@ -303,15 +368,35 @@ function App() {
                     </span>
                     <p>+98 922 236 56 85</p>
                   </div>
-                  <div className="w-full flex justify-start items-center gap-8 pt-4">
-                    <div className="scale-[2]">
-                      <AiFillGithub />
-                    </div>
-                    <div className="scale-[2]">
+                  <div className="flex justify-between items-center gap-2">
+                    <span className="scale-125">
                       <BsTelegram />
-                    </div>
+                    </span>
+                    <p>@HoseineMahmoudi</p>
+                  </div>
+                  <div className="w-full flex justify-start items-center gap-8 pt-4">
+                    <a
+                      href="https://github.com/hoseinmdev"
+                      target="blank"
+                      className="scale-[2]"
+                    >
+                      <AiFillGithub />
+                    </a>
+                    <a
+                      target="blank"
+                      href="https://t.me/hoseineMahmoudi"
+                      className="scale-[2]"
+                    >
+                      <BsTelegram />
+                    </a>
                   </div>
                 </div>
+                <button
+                  className="scale-[2] absolute bottom-16 right-16"
+                  onClick={() => fullpageApi.moveTo(1)}
+                >
+                  <BsFillArrowUpCircleFill />
+                </button>
               </div>
             </div>
           </ReactFullpage.Wrapper>

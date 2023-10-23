@@ -8,9 +8,22 @@
 }
 
 * {
+  scroll-behavior: smooth;
   font-family: "VazirFont";
 }
-
+@keyframes fadeShow {
+  from {
+    transform: translateY(-5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.fadeShow {
+  animation: fadeShow 0.5s;
+}
 @keyframes fadeShow1 {
   0% {
     transform: translateX(-5rem);
@@ -97,5 +110,5 @@
   animation: skillImageAnimation 3s infinite;
 }
 #fp-nav ul li a span{
-  background-color: #8b5cf6;
+  @apply bg-primary
 }
