@@ -108,7 +108,7 @@ function App() {
       render={({ fullpageApi }) => {
         return (
           <ReactFullpage.Wrapper>
-            <div className="section overflow-hidden">
+            <div className="section max-h-screen overflow-hidden">
               <div
                 className={` ${
                   i18n.dir() === "ltr" ? "right-0" : "left-0"
@@ -118,7 +118,7 @@ function App() {
               </div>
               <div
                 dir={i18n.dir()}
-                className="w-full overflow-hidden flex flex-col items-center justify-start transition-all"
+                className="w-full max-h-screen overflow-hidden flex flex-col items-center justify-start transition-all"
               >
                 <div className="w-full overflow-hidden max-h-screen h-screen lg:flex-row flex flex-col">
                   <div className="w-full lg:w-[50%] lg:h-full h-[35%] bg-primary relative">
