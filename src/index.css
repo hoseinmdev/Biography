@@ -9,6 +9,7 @@
 
 * {
   scroll-behavior: smooth;
+  scrollbar-width: 0px;
   font-family: "VazirFont";
 }
 @keyframes fadeShow {
