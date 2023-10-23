@@ -108,7 +108,7 @@ function App() {
       render={({ fullpageApi }) => {
         return (
           <ReactFullpage.Wrapper>
-            <div className="section max-h-screen overflow-hidden">
+            <div className="section">
               <div
                 className={` ${
                   i18n.dir() === "ltr" ? "right-0" : "left-0"
@@ -123,11 +123,11 @@ function App() {
                 <div className="w-full h-screen lg:flex-row flex flex-col">
                   <div className="w-full lg:w-[50%] lg:h-full h-[35%] bg-primary relative">
                     <div
-                      className={`lg:w-[28rem] hover:scale-105 ring-4 fadeShow1 ring-dark duration-300 lg:shadow-2xl lg:h-[28rem] rounded-full overflow-hidden absolute top-[8rem] right-0 ${
+                      className={`lg:w-[28rem]  hover:scale-105 ring-4 fadeShow1 ring-dark duration-300 lg:shadow-2xl lg:h-[28rem] rounded-full overflow-hidden absolute top-[8rem] ${
                         i18n.dir() === "ltr"
                           ? "lg:right-[-13.5rem]"
-                          : "lg:left-[-35.3rem] right-0"
-                      } w-[12rem] h-[12rem]  lg:bottom-32 mb-auto mt-auto mr-auto ml-auto left-0 lg:mr-auto lg:ml-auto lg:left-auto bottom-0`}
+                          : "lg:right-[25rem]"
+                      } w-[12rem] h-[12rem] right-0   lg:bottom-32 mb-auto mt-auto mr-auto ml-auto left-0 lg:mr-auto lg:ml-auto lg:left-auto bottom-0`}
                     >
                       <img className="" src={Myself} alt="" />
                     </div>
