@@ -123,10 +123,10 @@ function App() {
                 <div className="w-full h-screen lg:flex-row flex flex-col">
                   <div className="w-full lg:w-[50%] lg:h-full h-[35%] bg-primary relative">
                     <div
-                      className={`lg:w-[28rem]  hover:scale-105 ring-4 fadeShow1 ring-dark duration-300 lg:shadow-2xl lg:h-[28rem] rounded-full overflow-hidden absolute top-[8rem] ${
+                      className={`2xl:w-[28rem]  hover:scale-105 ring-4 fadeShow1 ring-dark duration-300 lg:shadow-2xl 2xl:h-[28rem] lg:w-[20rem] lg:h-[20rem] rounded-full overflow-hidden absolute top-[8rem] ${
                         i18n.dir() === "ltr"
                           ? "lg:right-[-13.5rem]"
-                          : "lg:right-[25rem]"
+                          : "lg:right-[65%]"
                       } w-[12rem] h-[12rem] right-0   lg:bottom-32 mb-auto mt-auto mr-auto ml-auto left-0 lg:mr-auto lg:ml-auto lg:left-auto bottom-0`}
                     >
                       <img className="" src={Myself} alt="" />
@@ -336,7 +336,7 @@ function App() {
                     </div>
                   </div>
                   <img
-                    className="hidden lg:block"
+                    className="hidden lg:block 2xl:w-[30rem] lg:w-[15rem]"
                     src="https://cdni.iconscout.com/illustration/free/thumb/free-developer-team-2043022-1731280.png"
                     alt=""
                   />
