@@ -53,12 +53,23 @@ function App() {
     },
     {
       skillName: "Redux",
-      imageUrl: "https://austincumberlander.com/assets/img/redux-icon.png",
+      imageUrl:
+        "https://repository-images.githubusercontent.com/347723622/92065800-865a-11eb-9626-dff3cb7fef55",
     },
     {
       skillName: "Next js",
       imageUrl:
         "https://www.datocms-assets.com/75941/1657707878-nextjs_logo.png",
+    },
+    {
+      skillName: "PWA",
+      imageUrl:
+        "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/pwa-icon.png",
+    },
+    {
+      skillName: "i18N",
+      imageUrl:
+        "https://camo.githubusercontent.com/f055080dc60e3fe64f11893fe506379defd0f1f0e06fcfbcb410cfef155e5ac5/68747470733a2f2f76616e64657273657970656e2e6465762f6173736574732f696d616765732f6931386e2f6c6f676f2d6c617267652e706e67",
     },
     {
       skillName: "Git & Github",
